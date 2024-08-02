@@ -1,0 +1,20 @@
+name: HTTP Status Check
+
+on:
+  schedule:
+    - cron: '*/2 * * * *'  # Runs every 5 minutes
+
+jobs:
+  check-status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check HTTP status
+        id: http_check
+        run: |
+          response=$(curl -s -o /dev/null -w "%{http_code}" https://blog.maha.nz)
+          echo "status=$response" >> $GITHUB_OUTPUT
+
+      - name: Trigger deploy workflow if status is 404
+        if: steps.http_check.outputs.status == '404'
+        run: echo "I will deploy now"
+
