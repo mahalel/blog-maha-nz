@@ -1,11 +1,15 @@
-name: HTTP Status Check
+name: Deploy to blog.maha.nz
 
 on:
   schedule:
-    - cron: '*/2 * * * *'  # Runs every 5 minutes
+    - cron: '*/5 * * * *'  # Runs every 5 minutes
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
-  check-status:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Check HTTP status
@@ -13,8 +17,38 @@ jobs:
         run: |
           response=$(curl -s -o /dev/null -w "%{http_code}" https://blog.maha.nz)
           echo "status=$response" >> $GITHUB_OUTPUT
+          echo "status=$response"
 
-      - name: Trigger deploy workflow if status is 404
-        if: steps.http_check.outputs.status == '404'
-        run: echo "I will deploy now"
+      - name: Checkout code
+        id: checkout
+        if: steps.http_check.outputs.status == '404' || github.event_name == 'push'
+        uses: actions/checkout@v4
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
+      - name: Setup Hugo
+        if: steps.checkout.outcome == 'success'
+        id: hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.129.0'
+          extended: true
+
+      - name: Build
+        if: steps.hugo.outcome == 'success'
+        id: build
+        run: hugo --source=./src --minify
+
+      - name: Install SSH key
+        if: steps.build.outcome == 'success'
+        id: ssh
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          known_hosts: unnecessary
+
+      - name: Deploy with rsync
+        if: steps.ssh.outcome == 'success'
+        run: |
+          rsync -avz --delete -e "ssh -v" -e "ssh -o StrictHostKeyChecking=no" ./src/public/ caddy@blog.maha.nz:/var/www/html/
