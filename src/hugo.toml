@@ -23,7 +23,7 @@ enableRobotsTXT = true
 # see https://gohugo.io/content-management/multilingual/
 [languages]
   [languages.en]
-    title = "maha"
+    title = ">_"
     languageName = "en-US 🇺🇸"
     LanguageCode = "en-US"
     contentDir = "content"
@@ -32,7 +32,7 @@ enableRobotsTXT = true
 
 [params]
   # The description of your website
-  description = "Bear Cub Demo"
+  description = "My personal blog"
 
   # The path to your favicon
   favicon = "images/favicon.png"
@@ -66,11 +66,10 @@ enableRobotsTXT = true
   # for posts that don't have `images` defined in their front matter; By setting
   # `generateSocialCard` to false, you can prevent this behavior. For more
   # information see layouts/partials/social_card.html
-  generateSocialCard = true
+  generateSocialCard = false
 
   # Author metadata. This is mostly used for the RSS feed of your site, but the
   # email is also added to the footer of each post. You can hide the "reply to"
   # link by using a `hideReply` param in front matter.
   [params.author]
     name = "Andrei Mahalean" # Your name as shown in the RSS feed metadata
-    # email = "blog@maha.nz" # Added to the footer so readers can reply to posts
