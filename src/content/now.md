@@ -8,7 +8,10 @@ date = "2024-08-01"
 
 # What I'm doing right now
 
+Last Updated: {{< timestamp >}}
+
 Here I keep an up-to-date list of the things I'm focusing on and what I'm doing. Think of it as a more relevant and interesting "About" page. Inspired by [nownownow.com](https://nownownow.com/about).
+
 
 ## Getting fit
 

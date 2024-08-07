@@ -4,6 +4,8 @@ theme = "hugo-bearcub"
 copyright = "Andrei Mahalean (CC BY 4.0)"
 defaultContentLanguage = "en"
 
+timeZone = "Pacific/Auckland"
+
 # Generate a nice robots.txt for SEO
 enableRobotsTXT = true
 
