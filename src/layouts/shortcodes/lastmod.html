@@ -1,0 +1,6 @@
+{{ $format := .Get 0 | default "2 Jan 2006" }}
+{{ with .Page.Lastmod }}
+    {{ .Format $format }}
+{{ else }}
+    {{ .Page.Date.Format $format }}
+{{ end }}

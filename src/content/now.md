@@ -3,12 +3,13 @@ title = "Now"
 menu = "main"
 weight = 2
 date = "2024-08-01"
+lastmod= "2023-08-08"
 +++
 
 
 # What I'm doing right now
 
-Last Updated: {{< timestamp >}}
+Last updated: {{< lastmod "January 2, 2006" >}}
 
 Here I keep an up-to-date list of the things I'm focusing on and what I'm doing. Think of it as a more relevant and interesting "About" page. Inspired by [nownownow.com](https://nownownow.com/about).
 
