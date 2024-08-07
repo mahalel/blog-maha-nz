@@ -23,7 +23,7 @@ enableRobotsTXT = true
 # see https://gohugo.io/content-management/multilingual/
 [languages]
   [languages.en]
-    title = ">_"
+    title = "Andrei Mahalean's Weblog"
     languageName = "en-US 🇺🇸"
     LanguageCode = "en-US"
     contentDir = "content"
@@ -32,7 +32,7 @@ enableRobotsTXT = true
 
 [params]
   # The description of your website
-  description = "My personal blog"
+  description = "Andrei Mahalean's Weblog"
 
   # The path to your favicon
   favicon = "images/favicon.png"
