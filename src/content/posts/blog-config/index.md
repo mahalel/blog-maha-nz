@@ -6,7 +6,16 @@ tags = ['hugo', 'terraform']
 title = 'Blog Setup'
 +++
 
-In this post, I explore the technology stack powering this blog, detailing the tools and processes used for both authoring content and deploying the site. 
+- [Infrastructure](#infrastructure)
+  - [Deployment](#deployment)
+- [Authoring](#authoring)
+  - [Deployment](#deployment-1)
+- [Analytics](#analytics)
+- [Monitoring](#monitoring)
+- [Optimizations](#optimizations)
+- [Future improvements](#future-improvements)
+
+In this post, I explore the technology stack powering this blog, detailing the tools and processes used for both authoring content and deploying the site.
 
 Requirements which I have considered that led me to my final choices:
 
@@ -15,24 +24,36 @@ Requirements which I have considered that led me to my final choices:
 - **Reproductible**: A side-effect of simplicity, if something is not working and I have spent more than 10 minutes troubleshooting it, blow the whole thing away and re-deploy it easily.
 - **Fast**: Minimalistic theme, fast build time, quick deployments. Keep it light (but in dark mode of course).
 - **Secure**: Use HTTPS, ensure HSTS and other security headers can be easily set.
-- **Control**: I want to be in control of the platform. I know I could just do this in Github Pages, or some S3/Azure Storage static hosting, but I need to have control over the webserver configuration.
+- **Governance**: Be in control of the platform. I know I could just do this in GitHub Pages, or some S3/Azure Storage static hosting, but I need to have control over the webserver configuration.
 
-## Decision
-With this in mind, I have decided to host the blog on the smallest DigitalOcean droplet, which comes with 512MB of memory and a 10GB disk, in the Sydney region.
-
-The system is running Debian 12 and uses Caddy as a webserver. This is great because Caddy will automatically sort out the TLS certificate using LetsEncrypt so that is one less thing to worry about.
-cloud-init is used to install caddy and apply the Caddyfile configuration for the site.
-
-I use HCP Terraform free tier to deploy all DigitalOcean infrastructure, including my DNS records.
+With this in mind, I have decided to host the blog on the smallest DigitalOcean (DO) droplet ($4 USD/month), which comes with 512MB of memory and a 10GB disk, in the Sydney region.
 
 ## Infrastructure
 
-![](https://app.eraser.io/workspace/EvRoTb1NQkUziDYIR8CZ/preview?elements=dNmjvjltfDCEtonUU3Oh2A&type=embed)
+The nameservers for my domain were already hosted in DO, so I can configure the DNS hostname for the site `blog.maha.nz` pointing to the reserved IP which is configured against the droplet. The DO firewall is allowing inbound ports for SSH and HTTP(S) and blocking everything else.
 
-<!-- (https://app.eraser.io/workspace/EvRoTb1NQkUziDYIR8CZ?elements=dNmjvjltfDCEtonUU3Oh2A) -->
+![Infra](infra.png)
 
+Normally my pick of server OS would be the latest Ubuntu LTS, but I have been unhappy with Canonical forcing snaps down our throats, so I have decided to go back to good ol' Debian, which will not let me down.
+
+For the webserver, NGINX or Traefik were my choice in the past, but I had heard good things about Caddy and was willing to give it a try. Caddy has a very simple configuration (Caddyfile) and will automatically sort out the TLS certificate using LetsEncrypt, nice and simple.
+For this scenario, Caddy simply serves the `/var/www/html` folder, where all the Hugo static content is uploaded to.
+
+For the time being, a very basic uptime monitor is configured in DigitalOcean which will automatically email me when the site is down. I plan to expand on this later on and add more checks, both for the OS & the services.
+
+![Uptime check](uptime.png)
+
+By now, you may be thinking _"This sure sounds like a lot of manual configuration"_. Let me re-assure you that all of this is deployed via Terraform, and I make use of cloud-init user data to configure the OS and webserver to the point where Caddy serves an empty folder.
+
+When all the services are up, and Caddy has configured a TLS certificate for the hostname, but no content has been uploaded yet to the public folder, it is at this point where we will start getting a `404` status code response for our root `https://blog.maha.nz/`. Before this, we do not get any HTTP response because the web server is still launching.
+
+The content can be deployed now, and I will cover that process in the [Authoring > Deployment](#deployment-1) section.
+
+
+### Deployment
+
+I use HCP Terraform free tier to deploy all DigitalOcean infrastructure, including my DNS records.
 For deploying I use a VCS workflow, where a push to my private infra GitHub repo will trigger a Terraform plan & apply.
-
 
 ## Authoring
 
