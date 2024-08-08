@@ -1,12 +1,8 @@
 +++
-author = "Andrei Mahalean"
-title = "Open URLs from WSL in your default browser"
-date = "2024-08-02"
-tags = [
-    "wsl",
-    "lazygit",
-    "git"
-]
+author = 'Andrei Mahalean'
+date = '2024-08-02'
+tags = ['wsl', 'lazygit', 'git']
+title = 'Open URLs from WSL in your default browser'
 +++
 
 When you prefer a terminal based workflow, and you want a bit more than the standard git cli (or any aliases you may have setup to make life easier), [lazygit](https://github.com/jesseduffield/lazygit) is hands down my favorite tool to work with. Please read the [elevator pitch](https://github.com/jesseduffield/lazygit?tab=readme-ov-file#elevator-pitch), then give it a try.

@@ -1,9 +1,9 @@
 +++
-title = "Now"
-menu = "main"
+date = '2024-08-01'
+lastmod = '2023-08-08'
+menu = 'main'
+title = 'Now'
 weight = 2
-date = "2024-08-01"
-lastmod= "2023-08-08"
 +++
 
 

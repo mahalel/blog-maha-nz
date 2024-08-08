@@ -1,8 +1,8 @@
----
-title: "Home"
-menu: "main"
-weight: 1
----
++++
+menu = 'main'
+title = 'Home'
+weight = 1
++++
 
 # About Me
 

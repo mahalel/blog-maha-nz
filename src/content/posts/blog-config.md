@@ -1,12 +1,9 @@
 +++
-author = "Andrei Mahalean"
-title = "Blog Setup"
-date = "2024-08-06"
-tags = [
-    "hugo",
-    "terraform",
-]
+author = 'Andrei Mahalean'
+date = '2024-08-06'
 draft = true
+tags = ['hugo', 'terraform']
+title = 'Blog Setup'
 +++
 
 In this post, I explore the technology stack powering this blog, detailing the tools and processes used for both authoring content and deploying the site. 
