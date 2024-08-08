@@ -26,6 +26,4 @@ Despite the challenges, I'm excited about the progress I'm making and the knowle
 
 ## Writing
 
-I have always toyed with the idea of writing, mostly for myself but also with the hope that someone finds value in some of the things I write about. After much contemplation, I've finally decided to take the plunge. I'm committing myself to a modest yet meaningful goal: crafting at least one post every month. This rhythm feels sustainable and allows me the space to reflect, create, and polish each piece.
-
-I've found Claude.ai to be a helpful companion in refining my writing and suggesting improvements. However, rest assured that each post remains authentically mine. I carefully infuse every piece with my personal voice, experiences, and perspectives.
+I have always toyed with the idea of writing, mostly for myself but also with the hope that someone finds value in some of the things I write about. After much contemplation, I have finally decided to take the plunge. I am committing myself to a modest goal: publishing at least one post every month. This rhythm feels sustainable and allows me the space to reflect, create, and polish each piece.

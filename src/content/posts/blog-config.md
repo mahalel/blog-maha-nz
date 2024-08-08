@@ -18,6 +18,7 @@ Requirements which I have considered that led me to my final choices:
 - **Reproductible**: A side-effect of simplicity, if something is not working and I have spent more than 10 minutes troubleshooting it, blow the whole thing away and re-deploy it easily.
 - **Fast**: Minimalistic theme, fast build time, quick deployments. Keep it light (but in dark mode of course).
 - **Secure**: Use HTTPS, ensure HSTS and other security headers can be easily set.
+- **Control**: I want to be in control of the platform. I know I could just do this in Github Pages, or some S3/Azure Storage static hosting, but I need to have control over the webserver configuration.
 
 ## Decision
 With this in mind, I have decided to host the blog on the smallest DigitalOcean droplet, which comes with 512MB of memory and a 10GB disk, in the Sydney region.
@@ -29,7 +30,9 @@ I use HCP Terraform free tier to deploy all DigitalOcean infrastructure, includi
 
 ## Infrastructure
 
-**TODO** - Add a diagram
+![](https://app.eraser.io/workspace/EvRoTb1NQkUziDYIR8CZ/preview?elements=dNmjvjltfDCEtonUU3Oh2A&type=embed)
+
+<!-- (https://app.eraser.io/workspace/EvRoTb1NQkUziDYIR8CZ?elements=dNmjvjltfDCEtonUU3Oh2A) -->
 
 For deploying I use a VCS workflow, where a push to my private infra GitHub repo will trigger a Terraform plan & apply.
 
