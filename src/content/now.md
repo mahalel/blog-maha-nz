@@ -1,6 +1,6 @@
 +++
 date = '2024-08-01'
-lastmod = '2023-08-08'
+lastmod = '2024-09-09'
 menu = 'main'
 title = 'Now'
 weight = 2
@@ -13,6 +13,9 @@ Last updated: {{< lastmod "January 2, 2006" >}}
 
 Here I keep an up-to-date list of the things I'm focusing on and what I'm doing. Think of it as a more relevant and interesting "About" page. Inspired by [nownownow.com](https://nownownow.com/about).
 
+## Studying
+
+Just passed the exam for the GitHub Copilot certification (currently in beta), next I am going to attempt the Azure Networking exam (AZ-700)
 
 ## Getting fit
 
