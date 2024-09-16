@@ -3,3 +3,4 @@ public
 src/resources/_gen/images/images
 .direnv
 .envrc
+.aider*
