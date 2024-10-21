@@ -9,7 +9,7 @@ Recently, I have been working on a little web application which needed to be dep
 
 My past experience is mainly using Azure DevOps, but this time I am using Github and I wanted to know what is the best way to build and deploy my container in ACA using Github Actions (**GHA**).
 
-It seemed very easy and straight forward to do so, but I quickly ran into some limitations of the action when a new use case emerged and I needed to deploy a proxy-auth sidecar container in the same ACA as my webapp.
+It seemed very easy and straight forward to do so, but when I realised I needed to deploy a proxy-auth sidecar container in the same ACA as my webapp things got a bit more complicated.
 
 In this post, I'm sharing my experience of getting everything up and running.
 
