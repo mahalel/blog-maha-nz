@@ -8,9 +8,10 @@ title = 'Deploying multiple containers in Azure Container Apps with Github Actio
 Recently, I have been working on a little web application which needed to be deployed in an Azure Container App (**ACA**).
 
 My past experience is mainly using Azure DevOps, but this time I am using Github and I wanted to know what is the best way to build and deploy my container in ACA using Github Actions (**GHA**).
+
 It seemed very easy and straight forward to do so, but I quickly ran into some limitations of the action when a new use case emerged and I needed to deploy a proxy-auth sidecar container in the same ACA as my webapp.
 
-In this post, I'm sharing my experience of getting everything up and running. The cool part? I stuck with using the Action instead of falling back on `az cli` commands in the workflow. 
+In this post, I'm sharing my experience of getting everything up and running.
 
 # Preface - OIDC auth to Azure
 
