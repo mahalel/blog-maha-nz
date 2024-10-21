@@ -1,0 +1,18 @@
+body {
+    max-width: none;
+    padding: 0 2em;
+}
+
+main,
+article,
+.post-content {
+    max-width: 1200px; /* Adjust this value as needed */
+    margin: 0 auto;
+    width: 100%;
+}
+
+header,
+footer {
+    max-width: 1200px; /* Adjust this to match the main content */
+    margin: 0 auto;
+}

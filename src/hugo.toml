@@ -35,6 +35,9 @@ enableRobotsTXT = true
 [params]
   # The description of your website
   description = "Andrei Mahalean's Weblog"
+  
+  # Add a Custom CSS to make the site content wider
+  customCSS = ["css/custom.css"]
 
   # The path to your favicon
   favicon = "images/favicon.png"
