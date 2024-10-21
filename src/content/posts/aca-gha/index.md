@@ -1,7 +1,7 @@
 +++
 author = 'Andrei Mahalean'
 date = '2024-10-21'
-tags = ['azure', 'github-actions']
+tags = ['azure', 'github-actions', 'container-apps']
 title = 'Deploying multiple containers in Azure Container Apps with Github Actions'
 +++
 
