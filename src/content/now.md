@@ -1,6 +1,6 @@
 +++
 date = '2024-08-01'
-lastmod = '2024-10-18'
+lastmod = '2024-10-31'
 menu = 'main'
 title = 'Now'
 weight = 2
@@ -15,7 +15,7 @@ Here I keep an up-to-date list of the things I'm focusing on and what I'm doing.
 
 ## Studying
 
-Passed my AZ-700 Azure Networking exam and in the process of taking the Github Actions exam next.
+Passed my Github Actions exam, considering tackling the AZ-305 (Azure Architect) next.
 
 ## Getting fit
 
