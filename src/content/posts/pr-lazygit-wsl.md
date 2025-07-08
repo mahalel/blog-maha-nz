@@ -31,12 +31,21 @@ Add the following content:
 
 ```bash
 #!/bin/bash
+
 url="$1"
-# Replace forward slashes with backslashes for Windows paths
-winpath=$(echo "$url" | sed 's/\//\\/g')
-# Escape special characters
-escaped_url=$(printf '%s' "$winpath" | sed 's/[&/\]/\\&/g')
-powershell.exe -c "Start-Process '$escaped_url'"
+
+# Don't convert slashes for http/https URLs
+if [[ "$url" == http* ]]; then
+    # For web URLs, use the original URL without modification
+    # Just escape single quotes for PowerShell
+    escaped_url=$(echo "$url" | sed "s/'/''/g")
+    powershell.exe -c "Start-Process '$escaped_url'"
+else
+    # For file paths, convert to Windows format
+    winpath=$(echo "$url" | sed 's/\//\\/g')
+    escaped_url=$(echo "$winpath" | sed "s/'/''/g")
+    powershell.exe -c "Start-Process '$escaped_url'"
+fi
 ```
 
 Remember to make the script executable:
